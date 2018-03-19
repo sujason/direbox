@@ -1,0 +1,19 @@
+.cropper {
+    position: relative;
+    cursor: crosshair;
+}
+.cropper-area-handle {
+    width: 6px;
+    height: 6px;
+    border: 1px solid white;
+}
+.cropper-area {
+	/*border: 1px solid green;*/
+	border: 2px solid green;
+	border-image: url(Jcrop.gif) 1 repeat repeat;
+}
+.cropper-overlay {
+/*    background: black;
+    opacity: 0.5;
+    filter: alpha(opacity = 50);*/
+}

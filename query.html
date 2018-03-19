@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>A sampling of Kaggle's Diabetic Retinopathy Challenge</title>
+
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+  <link rel='stylesheet prefetch' href='js/photoswipe/photoswipe.css'>
+  <link rel='stylesheet prefetch' href='js/photoswipe/default-skin/default-skin.css'>
+  <link rel='stylesheet prefetch' href='js/vanilla-modal/vanilla-modal.css'>
+  <link rel='stylesheet prefetch' href='css/animate.min.css'>
+  <link rel='stylesheet prefetch' href='css/viewer.css'>
+  <script>
+    USER = 'TEST'
+  </script>
+  <script id="cherrypy"></script>
+</head>
+
+<body>
+  <h1>Training data gallery</h1>
+  <button id="btn">Open PhotoSwipe</button>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+      <!-- Background of PhotoSwipe. 
+           It's a separate element, as animating opacity is faster than rgba(). -->
+      <div class="pswp__bg"></div>
+
+      <!-- Slides wrapper with overflow:hidden. -->
+      <div class="pswp__scroll-wrap">
+
+          <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+          <div class="pswp__container" id="container">
+              <!-- don't modify these 3 pswp__item elements, data is added later on -->
+              <div class="pswp__item"></div>
+              <div class="pswp__item"></div>
+              <div class="pswp__item"></div>
+          </div>
+
+          <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+          <div class="pswp__ui pswp__ui--hidden">
+
+              <div class="pswp__top-bar">
+                  <!--  Controls are self-explanatory. Order can be changed. -->
+
+                  <div class="pswp__counter"></div>
+
+                  <button class="pswp__button pswp__button--close nodisplay" title="Close (Esc)"></button>
+
+                  <button class="pswp__button pswp__button--share nodisplay" title="Share"></button>
+
+                  <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                  <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                  <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                  <!-- element will get class pswp__preloader--active when preloader is running -->
+                  <div class="pswp__preloader">
+                      <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                          <div class="pswp__preloader__donut"></div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                  <div class="pswp__share-tooltip"></div> 
+              </div>
+
+              <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+              </button>
+
+              <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+              </button>
+
+              <div class="pswp__caption">
+                  <div class="pswp__caption__center"></div>
+              </div>
+
+            </div>
+
+          </div>
+
+  </div>
+  <h1 id="saved">Saved!</h1> 
+  <div class="modal">
+    <div class="modal-inner">
+      <!-- <a rel="modal:close">&times;</a> -->
+      <div class="modal-content"></div>
+    </div>
+  </div>
+  <div id="modal-1" class="nodisplay">
+    <div id="modal-caman">
+      <canvas id="thumbnail"></canvas>
+      <div id="FilterControls">
+        <div class="Filter">
+          <div class="FilterName">
+            <p>brightness</p>
+          </div>
+          <div class="FilterSetting">
+            <input id="brightness2d"
+              type="range" 
+              min="-75"
+              max="75"
+              step="1"
+              value="0"
+              data-filter="brightness"
+            >
+            <span class="FilterValue"></span>
+          </div>
+        </div>
+      
+        <div class="Filter">
+          <div class="FilterName">
+            <p>contrast</p>
+          </div>
+          <div class="FilterSetting">
+            <input id="contrast2d"
+              type="range" 
+              min="-100"
+              max="100"
+              step="1"
+              value="0"
+              data-filter="contrast"
+            >
+            <span class="FilterValue"></span>
+          </div>
+        </div>
+      
+        <!-- <div class="Filter">
+          <div class="FilterName">
+            <p>saturation</p>
+          </div>
+          <div class="FilterSetting">
+            <input
+              type="range" 
+              min="-100"
+              max="100"
+              step="1"
+              value="0"
+              data-filter="saturation"
+            >
+            <span class="FilterValue">0</span>
+          </div>
+        </div> -->
+      
+        <div class="Filter">
+          <div class="FilterName">
+            <p>vibrance</p>
+          </div>
+          <div class="FilterSetting">
+            <input id="vibrance2d"
+              type="range" 
+              min="-1000"
+              max="1000"
+              step="10"
+              value="0"
+              data-filter="vibrance"
+            >
+            <span class="FilterValue"></span>
+          </div>
+        </div>
+
+        <div class="Filter">
+          <div class="FilterName">
+            <p>gamma</p>
+          </div>
+          <div class="FilterSetting">
+            <input id="gamma2d"
+              type="range" 
+              min="0"
+              max="4"
+              step="0.01"
+              value="1"
+              data-filter="gamma"
+            >
+            <span class="FilterValue"></span>
+          </div>
+        </div>
+      
+        <!-- <div class="Filter">
+          <div class="FilterName">
+            <p>exposure</p>
+          </div>
+          <div class="FilterSetting">
+            <input
+              type="range" 
+              min="-50"
+              max="50"
+              step="1"
+              value="0"
+              data-filter="exposure"
+            >
+            <span class="FilterValue">0</span>
+          </div>
+        </div>
+
+        <div class="Filter">
+          <div class="FilterName">
+            <p>sharpen</p>
+          </div>
+          <div class="FilterSetting">
+            <input
+              type="range" 
+              min="-100"
+              max="100"
+              step="1"
+              value="0"
+              data-filter="sharpen"
+            >
+            <span class="FilterValue">0</span>
+          </div>
+        </div> -->
+        <div class="Filter switch">
+          <input id="gray-switch" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" data-filter="greyscale">
+          <label for="gray-switch" data-on="Grey" data-off="RGB"></label>
+        </div>
+      </div>
+      <div id="FilterButtons">
+        <button id="FilterOk" onclick="apply_filters()">Apply</button>
+        <button id="FilterReset" onclick="reset_filter_menu()">Reset</button>
+        <!-- <button id="FilterCancel" onclick="modal.close('#modal-1')">Cancel</button> -->
+      </div>
+    </div>
+  </div>
+  <div id="modal-motd" class="nodisplay">
+    <div id="motd">
+      <ul>Changes:
+        <li>Allow Save: you MUST turn this on to enable saving on swipe.</li>
+        <li>Hide Boxes: temporarily hide the boxes. NOTE: you can still create boxes while they're hidden. Be careful!</li>
+      </ul>
+      <ul>Fixes:
+        <li>Box losing bug is fixed, sorry about that.</li>
+        <li>Flagged cases are now properly indicated on initial page load, after 1 sec.</li>
+        <li>URL address now updates in a more timely fashion.</li>
+      </ul>
+      <ul>Known Issues:
+        <li>Changing the pid # in the URL can make the viewer unresponsive on the new image.  Refresh to fix.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="quick-buttons left">
+    <button class="button" onclick="reload_boxes(gallery)">Restore Boxes</button>
+    <button class="button" onclick="caman_reset()">Revert Image</button>
+    <button class="button" onclick="caman_preset(this)">Greyscale</button>
+    <button class="button" onclick="pinhole()">Pinhole</button>
+    <button class="button" onclick="modal.open('#modal-1')">Filters</button>
+  </div>
+  <div class="quick-buttons right">
+    <input id="edit-switch" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
+    <label for="edit-switch" data-on="Save On" data-off="Allow Save"></label>
+    <input id="hide-switch" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
+    <label for="hide-switch" data-on="Hidden" data-off="Hide Boxes"></label>
+    <input id="difficult-switch" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
+    <label for="difficult-switch" data-on="Flagged" data-off="Flag Case"></label>
+  </div>
+  <script src='js/interact-1.2.4.min.js'></script>
+  <script src='js/camanjs/caman.full.min.js'></script>
+  <script src='js/photoswipe/photoswipe-custom.js'></script>
+  <script src='js/photoswipe/photoswipe-ui-default.min.js'></script>
+  <script src='js/superagent.js'></script>
+  <script src='js/vanilla-modal/vanilla-modal.min.js'></script>
+  <script src="js/training_sample.js"></script>
+  <script>
+  //   var motd_opts = {
+  //   clickOutside: true,
+  //   closeKey: 27,
+  //   transitions: false,
+  // }
+  // var motd = new VanillaModal(motd_opts)
+  // motd.open('#modal-motd')
+  </script>
+</body>
+
+</html>

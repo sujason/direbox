@@ -1,0 +1,261 @@
+.pswp__counter {
+    font-size: 25px;
+    font-family: 'PT Sans', sans-serif;
+  }
+  .pswp__caption__center {
+     font-family: 'PT Sans', sans-serif;
+     padding-bottom: 20px;
+  }
+  .caption {
+    color: white;
+    background-color: #333;
+    font-size: 18pt;
+    text-align: center;
+    padding: 4pt;
+  }
+  .caption:hover {
+    color: white;
+  }
+  .caption span {
+    color: white;
+    float: left;
+  }
+  .help {
+    font-size: 14pt;
+    text-align: left;
+  }
+  .left {
+    left: 10px;
+  }
+  .right {
+   right: 10px; 
+  }
+  .quick-buttons {
+    position: fixed;
+    top: 50px;
+    max-width: 120px;
+    z-index: 3000;
+  }
+  .quick-buttons button {
+    width: 120px;
+    height: 40px;
+    margin: 0 auto;
+  }
+  #saved {
+    display: none;
+    color: white;
+    text-align: center;
+    height: 100px;
+    font-size: 70pt;
+    font-weight: bold;
+    font-family: 'PT Sans', sans-serif;
+    width: 100%;
+    /*-webkit-animation-duration: 1s;
+    animation-duration: 1s;*/
+    position: fixed;
+    top: 30%;
+    z-index: 2000;
+    /*http://stackoverflow.com/a/6382492*/
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /*http://stackoverflow.com/a/3538713*/
+    pointer-events: none;
+  }
+  .resize-drag {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'PT Sans', sans-serif;
+    text-align: center;
+    border: 4px ridge white;
+    /*border-image: url(Jcrop.gif) 1 repeat repeat;*/
+    width: 256px;
+    height: 256px;
+    padding: 0;
+    margin: 0;
+    -webkit-box-shadow: 0px 0px 0px 5px;
+    -moz-box-shadow: 0px 0px 0px 5px;
+    box-shadow: 0px 0px 0px 5px;
+    /* Req'd for interact.js */
+    box-sizing: border-box;
+    color: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: visible;
+    z-index: 1;
+
+  }
+  .toggle_moving {
+    border-width: 2px;
+    border-image: url(/Jcrop.gif) 1 repeat repeat;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+  .resize-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .interact span {
+    display: none;
+    white-space: nowrap;
+  }
+  .interact:hover span {
+    display: block;
+    margin-top: -60px;
+  }
+  .exudate { color: #FFD700;  }
+  .hemorrhage { color: #DC143C;  }
+  .laser_new { color: #FFF8DC;  }
+  .laser_old { color: #2E8B57;  }
+  .macula { color: #4B0082;  }
+  .disc { color: black; }
+  .new_vessels { color: #87CEEB; }
+  .abnormal_nerve { color: #FFD700;  }
+  .abnormal_retina { color: #DC143C;  }
+  .treated { color: #2E8B57;  }
+  .artifact { color: #87CEEB; }
+  .class_0 { color: #ccc; }
+  .class_1 { color: #999; }
+  .class_2 { color: #666; }
+  .class_3 { color: #333; }
+  .class_4 { color: black; }
+
+
+  .nodisplay {
+    display: none;
+     
+    /*display: block;
+    position: fixed;
+    right: 0;
+    z-index: 3000*/;
+ 
+  }
+  #modal-caman {
+    color: white;
+    text-align: center;
+    /*width: 400px;
+    min-height: 500px;*/
+    padding: 0 10px;
+    background-color: #222;
+    border: 6px solid #333;
+  }
+  #modal-caman canvas#thumbnail {
+    display: block;
+    margin: 10px auto;
+    border: 1px solid #333;
+  }
+  #FilterControls {
+    width: 360px;
+    margin: 0 auto 10px auto;
+    border: 1px solid #333;
+  }
+  .Filter {
+    display: inline-block;
+    margin: 0 5px;
+  }
+  .Filter input {
+    width: 140px;
+  }
+  .FilterName p {
+    font-weight: bold;
+    font-family: 'PT Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .FilterSetting {
+    vertical-align: middle;
+  }
+  .FilterValue {}
+  #FilterButtons {
+    margin-bottom: 10px;
+  }
+
+  /*http://callmenick.com/post/css-toggle-switch-examples*/
+  .cmn-toggle {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+  }
+  .cmn-toggle + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+  }
+  #FilterControls div.switch {
+    float: none;
+    clear: both;
+  }
+  #modal-caman input.cmn-toggle-yes-no + label {
+    margin: 0 auto 10px auto;
+  }
+  input.cmn-toggle-yes-no + label {
+    margin-bottom: 2px;
+    padding: 2px;
+    width: 116px;
+    height: 40px;
+  }
+  input.cmn-toggle-yes-no:hover + label:before,
+  input.cmn-toggle-yes-no:hover + label:after {
+    border-color: #8ce196 !important;
+  }
+  input.cmn-toggle-yes-no + label:before,
+  input.cmn-toggle-yes-no + label:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    font-family: 'Roboto Slab', serif;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+    border: 1px solid #333;
+  }
+  input.cmn-toggle-yes-no + label:before {
+    border-color: #333;
+    background-color: #222;
+    content: attr(data-off);
+    /*transition: transform 0.5s;*/
+    backface-visibility: hidden;
+  }
+  input.cmn-toggle-yes-no + label:after {
+    border-color: #8ce196;
+    background-color: #333;
+    content: attr(data-on);
+    /*transition: transform 0.5s;*/
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+  input.cmn-toggle-yes-no:checked + label:before {
+    transform: rotateY(180deg);
+  }
+  input.cmn-toggle-yes-no:checked + label:after {
+    transform: rotateY(0);
+  }
+  input#gray-switch.cmn-toggle-yes-no + label:before {
+    border-color: #8ce196;
+    background-color: #333;
+  }
+  input#gray-switch.cmn-toggle-yes-no + label:after {
+    border-color: #333;
+    background-color: #222;
+  }
+  #motd {
+    color: white;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.4em;
+    background: black;
+    border: 5px solid #222;
+    min-height: 500px;
+    padding: 10px;
+  }
